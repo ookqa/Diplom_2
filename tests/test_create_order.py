@@ -1,6 +1,7 @@
 import allure
 import requests
 from urls import Urls
+from data import  IngredientsData
 
 
 class TestCreateOrder:
@@ -11,7 +12,7 @@ class TestCreateOrder:
         access_token = create_new_user[1]["accessToken"]
         headers = {"Authorization": f"{access_token}"}
         payload = {
-            'ingredients': ['61c0c5a71d1f82001bdaaa6d', '61c0c5a71d1f82001bdaaa75', '61c0c5a71d1f82001bdaaa78']
+            'ingredients': [IngredientsData.BUN, IngredientsData.SAUCE, IngredientsData.FILLER]
         }
         response = requests.post(f'{Urls.GET_USER_ORDERS}', data=payload, headers=headers)
         data = response.json()
